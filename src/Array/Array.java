@@ -21,6 +21,14 @@ public class Array<E> {
         this.size = 0;
     }
 
+    public Array(E[] arr) {
+        data = (E[]) new Object[arr.length];
+        for (int i=0; i<arr.length; i++){
+            data[i] = arr[i];
+        }
+        size = arr.length;
+    }
+
     /**
      * 在索引为index的位置添加元素e
      * @param index
@@ -244,6 +252,20 @@ public class Array<E> {
             throw new IllegalStateException("index不合法");
         }
         data[index] = e;
+    }
+
+    /**
+     * 数组中两个索引对应位置的元素交换位置
+     * @param i
+     * @param j
+     */
+    public void swap(int i, int j){
+        if (i >= 0 && i < data.length && j >= 0 && j< data.length){
+            E k = data[i];
+            data[i] = data[j];
+            data[j] = k;
+        }else
+            throw new IllegalArgumentException("索引不合法");
     }
 
     /**
